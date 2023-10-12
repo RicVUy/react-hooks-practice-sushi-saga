@@ -19,15 +19,23 @@ function App() {
   }, [])
 
   function handleEatSushi(eatenSushi) {
-    const updatedSushis = sushis.map((sushi) => {
-      if (sushi.id === eatenSushi.id) {
-        return {...sushi, isEaten:true}
+    const remainder = wallet - eatenSushi.price
+if (remainder >=0) {
+  const updatedSushis = sushis.map((sushi) => {
+    if (sushi.id === eatenSushi.id) {
+      return {...sushi, isEaten:true}
 
-      } else {
-        return sushi 
-      }
-    })
-    setSushis(updatedSushis)
+    } else {
+      return sushi 
+    }
+  })
+  setWallet(remainder)
+  setSushis(updatedSushis)
+} else {
+ alert("You do not have money")
+}
+
+    
   }
   const emptyPlates = sushis.filter((sushi) => sushi.isEaten)
   console.log(sushis)
