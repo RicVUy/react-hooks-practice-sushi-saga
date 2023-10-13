@@ -37,12 +37,16 @@ if (remainder >=0) {
 
     
   }
+
+  function handleAddMoney(amount) {
+setWallet(wallet => wallet + amount)
+  }
   const emptyPlates = sushis.filter((sushi) => sushi.isEaten)
   console.log(sushis)
   return (
     <div className="app">
       <SushiContainer sushis={sushis} onEatSushi={handleEatSushi}/>
-      <Table plates={emptyPlates} wallet={wallet}/>
+      <Table plates={emptyPlates} wallet={wallet} onAddMoney={handleAddMoney}/>
     </div>
   );
 }
