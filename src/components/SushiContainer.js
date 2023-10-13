@@ -10,9 +10,12 @@ function SushiContainer({sushis, onEatSushi}) {
   .map(sushi => <Sushi key={sushi.id} sushi={sushi} onEatSushi={onEatSushi}/>)
   
   function handleMoreSushi(){
-    setCurrentSushiIndex(currentSushiIndex => currentSushiIndex +4)
-
-  }
+     if (currentSushiIndex === sushis.length - 4) {
+      setCurrentSushiIndex(0)
+     } else {
+      setCurrentSushiIndex(currentSushiIndex => currentSushiIndex +4)
+     }
+     }
 
 
   return (
